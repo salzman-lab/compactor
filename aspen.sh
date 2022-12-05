@@ -11,8 +11,6 @@ input_dir='/oak/stanford/groups/horence/NOMAD/nomad_runs/tabula_sapiens/TSP_SS2_
 ## USER PROVIDES PATH TO NOMAD OUTPUT DIRECTORY HERE.
 output_dir='/oak/stanford/groups/horence/NOMAD/nomad_results/tabula_sapiens/TSP_SS2_tissue/'$1'/'$2'/results/'
 
-## END USER INVOLVEMENT.
-
 ml python/3.6.1
 ml py-numpy
 ml py-pandas
