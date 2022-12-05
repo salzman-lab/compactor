@@ -4,6 +4,15 @@
 #SBATCH --mem=8000      # In MB
 #SBATCH --job-name=flu     # job name
 
+
+## USER PROVIDES PATH TO NOMAD SAMPLESHEET HERE.
+input_dir='/oak/stanford/groups/horence/NOMAD/nomad_runs/tabula_sapiens/TSP_SS2_tissue/'$1'/'$2'/sample_sheet.csv'
+
+## USER PROVIDES PATH TO NOMAD OUTPUT DIRECTORY HERE.
+output_dir='/oak/stanford/groups/horence/NOMAD/nomad_results/tabula_sapiens/TSP_SS2_tissue/'$1'/'$2'/results/'
+
+## END USER INVOLVEMENT.
+
 ml python/3.6.1
 ml py-numpy
 ml py-pandas
@@ -12,12 +21,6 @@ ml py-biopython/1.79_py39
 
 run_title=$1'_'$2
 run_title2="$run_title1""2"
-
-## USER PROVIDES PATH TO NOMAD SAMPLESHEET HERE.
-input_dir='/oak/stanford/groups/horence/NOMAD/nomad_runs/tabula_sapiens/TSP_SS2_tissue/'$1'/'$2'/sample_sheet.csv'
-
-## USER PROVIDES PATH TO NOMAD OUTPUT DIRECTORY HERE.
-output_dir='/oak/stanford/groups/horence/NOMAD/nomad_results/tabula_sapiens/TSP_SS2_tissue/'$1'/'$2'/results/'
 
 mkdir "$run_title"
 
