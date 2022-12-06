@@ -7,6 +7,8 @@ import sys
 import time
 import argparse
 
+anchors_to_process_in_parallel = 80
+
 # Function to submit parallel slurm jobs which generate compactors from intermediate files. 
 def sbatch_file(intermediate, file_name):
 
@@ -34,5 +36,5 @@ if True:
     consensus_log.close()
 
 
-for i in range(0, len(intermediates), 80):
-    sbatch_file(",".join(intermediates[i:i+80]), 'generate_compactor_' + str(i))
+for i in range(0, len(intermediates), anchors_to_process_in_parallel):
+    sbatch_file(",".join(intermediates[i:i+anchors_to_process_in_parallel]), 'generate_compactor_' + str(i))
