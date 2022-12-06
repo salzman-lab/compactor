@@ -7,7 +7,7 @@ import sys
 import time
 import argparse
 
-
+fastqs_to_process_in_parallel = 1
 
 # Function to write and submit slurm jobs which parse samplesheet fastqs in parallel.
 def sbatch_file(fastq, file_name, num_fastqs):
@@ -75,5 +75,5 @@ if sys.argv[3] != "recursive":
 
 
 # Submit parallel jobs parsing samplesheet fastqs. 
-for i in range(0, len(fastqs), 1):
-    sbatch_file(",".join(fastqs[i:i+1]), 'generate' + str(i), len(fastqs))
+for i in range(0, len(fastqs), fastqs_to_process_in_parallel):
+    sbatch_file(",".join(fastqs[i:i+fastqs_to_process_in_parallel]), 'generate' + str(i), len(fastqs))
