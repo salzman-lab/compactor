@@ -16,7 +16,7 @@ This script requires the following:
 1. Python 3.9
 2. NumPy 1.20.3
 3. Pandas 1.3.1 
-4. biopython 1.79_py39
+4. BioPython 1.79
 
 
 ## Parallelization tuning
