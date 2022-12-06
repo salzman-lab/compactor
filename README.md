@@ -9,6 +9,8 @@ Compactors are seed-based contigs constrained to FASTQ read-length. NOMAD-called
 This script takes as input the results of the Salzman Lab's NextFlow implementation of NOMAD. In aspen.sh, the user specifies:
 1. A path to the samplesheet used input to NOMAD.
 2. A path to the NOMAD results directory.
+Pull this repository to your machine, and call 'aspen.sh' with a single argument to specify the run name: we might do
+sbatch aspen.sh 'test_compactors'.
 
 ## Dependencies
 
