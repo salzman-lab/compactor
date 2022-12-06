@@ -10,7 +10,7 @@ This script takes as input the results of the Salzman Lab's NextFlow implementat
 1. A path to the samplesheet used input to NOMAD.
 2. A path to the NOMAD results directory.
 
-Pull this repository to your machine, make the appropriate changes to aspen.sh, and call aspen.sh with a single argument to specify the run name: we might do
+Pull this repository to your machine, make the above changes to aspen.sh, and call aspen.sh with a single argument to specify the run name: we might do
 sbatch aspen.sh 'test_compactors'.
 
 ## Dependencies
