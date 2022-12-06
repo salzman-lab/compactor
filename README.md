@@ -12,7 +12,7 @@ This script takes as input the results of the Salzman Lab's NextFlow implementat
 
 ## Dependencies
 
-This script requires the following: 
+This code requires the following: 
 1. Python 3.9
 2. NumPy 1.20.3
 3. Pandas 1.3.1 
