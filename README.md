@@ -12,7 +12,7 @@ This script takes as input the results of the Salzman Lab's NextFlow implementat
 
 ## Parallelization tuning
 
-submit_parse.py is used to parallize jobs parsing samplesheet FASTQs for reads containing NOMAD-called anchors. In cases where the user has a few very large FASTQs (10s of GB), it is recommended to set fastqs_to_process_in_parallel to 1. In cases where the user has many FASTQs (100s, as in the case with Tabula Sapiens SS2 data), we recommend setting fastqs_to_process_in_parallel to 10. This parameter can be found on line 10 of submit_parse.py. 
+submit_parse.py is used to parallize jobs parsing samplesheet FASTQs for reads containing NOMAD-called anchors. In cases where the user has a few very large FASTQs (10s of GB), it is recommended to set fastqs_to_process_in_parallel to 1. In cases where the user has many FASTQs (100s, as in the case with Tabula Sapiens SS2 data), it is recommended to set fastqs_to_process_in_parallel to 10. This parameter can be found on line 10 of submit_parse.py. 
 
 parallel_generate.py is used to parallelize jobs generating compactors from anchor-specific intermediate files (sets of reads containing an anchor). We recommend that the user set anchors_to_process_in_parallel to a value such that  {total anchors input to compactor generation} /  anchors_to_process_in_parallel < 1500. This parameter can be found on line 10 of parallel_generate.py. 
 
