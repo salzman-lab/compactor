@@ -13,7 +13,7 @@ This script takes as input the results of the Salzman Lab's NextFlow implementat
 Pull this repository to your machine, make the above changes to aspen.sh, and call aspen.sh with a single argument to specify the run name: we might do
 sbatch aspen.sh 'test_compactors'.
 
-It is recommended to verify that the column names on lines 55 and 56 of submit_parse.py agree with the relevant column names in the native NOMAD summar.tsv output. 
+It is recommended to verify that the column names on lines 55 and 56 of submit_parse.py agree with the relevant column names in the native NOMAD summary.tsv output. 
 
 ## Dependencies
 
