@@ -9,6 +9,9 @@
 #SBATCH --mem=60Gb
 #SBATCH --requeue
 
+## For Sherlock users, try activating George Henderson's virtual environment, or otherwise be sure umi_tools is available. 
+source /oak/stanford/groups/horence/george/dog/bin/activate
+
 id=$1
 
 R1=${id}_1.fastq.gz
