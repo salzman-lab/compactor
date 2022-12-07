@@ -9,6 +9,8 @@ from Bio import SeqIO
 
 def make_intermediaries(fastq,  max_anchor_reads=200, anchor_length=27):
 
+    barcodes = []
+    
     if sys.argv[3] != "recursive":
         anchor_list = pd.read_csv('anchors.tsv', engine='python', sep='\t', header=None)
         anchor_list = list(anchor_list.iloc[:,0])
@@ -27,7 +29,7 @@ def make_intermediaries(fastq,  max_anchor_reads=200, anchor_length=27):
     num_anchors = len(anchor_list)
 
     # Set threshold for reads per fastq: default to 100 million / number of samples.
-    num_reads = 1e6
+    num_reads = 1e10
 
     # Create variables for performance tracking.
     local_reads = 0
@@ -70,7 +72,9 @@ def make_intermediaries(fastq,  max_anchor_reads=200, anchor_length=27):
                             # Add read to dictionary and increment sample-specific written read count. 
                             
                             barcode = str(record.id).split(" ")[0].split("_")[1]
-                            
+                            if barcode not in barcodes:
+                                barcodes.append(barcode)
+                                
                             read_dictionary[anchor].append(read[i:] + '\t' + barcode + '\n')
                             written_reads += 1
      
@@ -85,9 +89,17 @@ def make_intermediaries(fastq,  max_anchor_reads=200, anchor_length=27):
             for item in read_dictionary[key]:
                 anchor_log.write(item)
 
-    return
-
-fastqs = sys.argv[1].split(",")
+    return barcodes
 
 for fastq in fastqs:
-    make_intermediaries(fastq)
+    codus = make_intermediaries(fastq)
+
+contribution = open('sample_specificity.tsv', 'w')
+stork = ''
+for i in range(len(codus)):
+    stork += codus[i] + '\t'
+stork = stork[:-1]
+stork += '\n'
+contribution.write('anchor\tcompactor\t' + stork)
+contribution.close()
+fastqs = sys.argv[1].split(",")
