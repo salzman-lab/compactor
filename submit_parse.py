@@ -43,7 +43,8 @@ contribution.close()
 
 
 # If we are not in a recursive call, take anchors from anchors_pvals.tsv file.
-if sys.argv[3] != "recursive": 
+#if sys.argv[3] != "recursive": 
+if 0 == 1:
 
     loading_anchors = time.time()
     print('Initializing parser.', flush=True)
