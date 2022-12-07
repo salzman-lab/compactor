@@ -24,22 +24,11 @@ def sbatch_file(fastq, file_name, num_fastqs):
     job_file.write("python3 make_intermediates.py " + fastq + " " + str(num_fastqs) + " " + sys.argv[3])
     job_file.close()
     status, job_num = subprocess.getstatusoutput("sbatch {}".format(file_name + '.sh'))
-
     
     
 # Load samplesheet. 
 samplesheet = pd.read_csv(sys.argv[1], engine='python', sep=',', header=None)
 fastqs = list(samplesheet.iloc[:,0])
-
-# Write sample contribution file. 
-contribution = open('sample_specificity.tsv', 'w')
-stork = ''
-for i in range(len(fastqs)):
-    stork += fastqs[i] + '\t'
-stork = stork[:-1]
-stork += '\n'
-contribution.write('anchor\tcompactor\t' + stork)
-contribution.close()
 
 
 # If we are not in a recursive call, take anchors from anchors_pvals.tsv file.
