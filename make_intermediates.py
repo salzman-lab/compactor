@@ -68,7 +68,10 @@ def make_intermediaries(fastq,  max_anchor_reads=200, anchor_length=27):
                         if fastq_specific_count[anchor] <= max_anchor_reads:
 
                             # Add read to dictionary and increment sample-specific written read count. 
-                            read_dictionary[anchor].append(read[i:] + '\t' + fastq + '\n')
+                            
+                            barcode = str(record.id).split(" ")[0].split("_")[1]
+                            
+                            read_dictionary[anchor].append(read[i:] + '\t' + barcode + '\n')
                             written_reads += 1
      
         # Log filename, reads, writes, and execution time.
