@@ -91,6 +91,7 @@ def make_intermediaries(fastq,  max_anchor_reads=200, anchor_length=27):
 
     return barcodes
 
+fastqs = sys.argv[1].split(",")
 for fastq in fastqs:
     codus = make_intermediaries(fastq)
 
@@ -102,4 +103,3 @@ stork = stork[:-1]
 stork += '\n'
 contribution.write('anchor\tcompactor\t' + stork)
 contribution.close()
-fastqs = sys.argv[1].split(",")
