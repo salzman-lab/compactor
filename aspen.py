@@ -169,7 +169,7 @@ def mallorn_2(dataframe, epsilon, N, recursive_depth, step, count_dictionary, ge
                     stork += str(0) + '\t'
             stork = stork[:-1]
             stork += '\n'
-            contribution = open('sample_specificity.tsv', 'a')
+            contribution = open('sample_specificity_'+sys.argv[1].split(',')[0]+'.tsv', 'a')
             contribution.write(stork)
             contribution.close()
 
@@ -190,18 +190,18 @@ def mallorn_2(dataframe, epsilon, N, recursive_depth, step, count_dictionary, ge
         dataframe.to_csv(consensus_leaf + '.compactor', sep='\t')
         
         # Write the compactor of this leaf to an aggregate file for all anchors. 
-        with open('compactor.fasta', 'a') as consensus_log:
+        with open('compactor'+sys.argv[1]split(',')[0]+'.fasta', 'a') as consensus_log:
             consensus_log.write('>' + anchor_leaf + '_' + naming_valid +'\n')
             consensus_log.write(consensus_leaf+'\n')
          
         # Write the greedy, full-leaf on this branch.
-        with open('spindles.fasta', 'a') as leaf_log:
+        with open('spindles'+sys.argv[1]split(',')[0]+'.fasta', 'a') as leaf_log:
             leaf_log.write('>' + anchor_leaf + '_' + naming +'\n')
             leaf_log.write(consensus_full_leaf +'\n')
 
         roozbeh_out = anchor_leaf + '\t' + consensus_leaf + '\t' + str(bin_sum/anchor_sum)[:4] + '\t' + str(anchor_sum) + '\t' + str(valid_abundance/anchor_sum)[0:4]  + '\t' + str(valid_abundance) + '\t' + str(bin_sum) + '\t' + str(effect_size)[0:4] + '\t' + str(mu_lev)[0:4] + '\t' +  dataframe['path'][build_from] + '\t' + consensus_full_leaf + '\n'
 
-        with open('compactor_summary.tsv', 'a') as consensus_log:
+        with open('compactor_summary'+sys.argv[1]split(',')[0]+'.tsv', 'a') as consensus_log:
             consensus_log.write(roozbeh_out)
         return
 
@@ -249,7 +249,7 @@ def mallorn_2(dataframe, epsilon, N, recursive_depth, step, count_dictionary, ge
                     stork += str(0) + '\t'
             stork = stork[:-1]
             stork += '\n'
-            contribution = open('sample_specificity.tsv', 'a')
+            contribution = open('sample_specificity_'+sys.argv[1].split(',')[0]+'.tsv', 'a')
             contribution.write(stork)
             contribution.close()
             return mallorn_2(dataframe, epsilon, N, recursive_depth - 1, step + 1, count_dictionary, gene_name, effect_size, take_majority, show_leaf_only, directory, len(dataframe.index.tolist()), True, mu_lev, num_annotations, top_ann_hit, accept_random_nucleotide)
@@ -379,7 +379,6 @@ def mallorn_2(dataframe, epsilon, N, recursive_depth, step, count_dictionary, ge
                 mallorn_2(recursed5, epsilon, N, recursive_depth-1, step+1, count_dictionary, gene_name, effect_size, take_majority, show_leaf_only, directory, valid_abundance, taken_valid_abundance, mu_lev, num_annotations, top_ann_hit, accept_random_nucleotide) 
 
                 return
-
 
 
 anchor_files = sys.argv[1]
