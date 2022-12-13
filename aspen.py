@@ -252,8 +252,8 @@ def mallorn_2(dataframe, epsilon, N, recursive_depth, step, count_dictionary, ge
             contribution = open('sample_specificity.tsv', 'a')
             contribution.write(stork)
             contribution.close()
-            return mallorn_2(dataframe, epsilon, N, recursive_depth - 1, step + 1, count_dictionary, gene_name, effect_size, take_majority, show_leaf_only, directory, len(dataframe.index.tolist()), True, mu_lev, num_annotations, top_ann_hit, accept_random_nucleotide)
-        return mallorn_2(dataframe, epsilon, N, recursive_depth - 1, step + 1, count_dictionary, gene_name, effect_size, take_majority, show_leaf_only, directory, valid_abundance, taken_valid_abundance, mu_lev, num_annotations, top_ann_hit, accept_random_nucleotide)
+        return mallorn_2(dataframe, epsilon, N, recursive_depth - 1, step + 1, count_dictionary, gene_name, effect_size, take_majority, show_leaf_only, directory, len(dataframe.index.tolist()), True, mu_lev, num_annotations, top_ann_hit, accept_random_nucleotide)
+        #return mallorn_2(dataframe, epsilon, N, recursive_depth - 1, step + 1, count_dictionary, gene_name, effect_size, take_majority, show_leaf_only, directory, valid_abundance, taken_valid_abundance, mu_lev, num_annotations, top_ann_hit, accept_random_nucleotide)
     
     # Case in which one nucleotide passes thresholds. 
     if np.sum(bools) == 1 and not taken_valid_abundance:
