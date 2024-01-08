@@ -88,6 +88,7 @@ def make_intermediaries(fastq,  max_anchor_reads=200, anchor_length=27):
         with open(key + '.intermediary', 'a') as anchor_log:
             for item in read_dictionary[key]:
                 anchor_log.write(item)
+        anchor_log.close()
 
     return barcodes
 
